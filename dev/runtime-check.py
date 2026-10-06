@@ -110,10 +110,15 @@ def runtime_commit() -> str:
     ).strip()
 
 
-def setup(archive: Path | None) -> None:
-    shutil.rmtree(ROOT, ignore_errors=True)
-    EXTENSIONS.mkdir(parents=True)
+def setup(archive: Path | None, reset: bool = True) -> None:
+    if reset:
+        shutil.rmtree(ROOT, ignore_errors=True)
+    EXTENSIONS.mkdir(parents=True, exist_ok=True)
     installed = EXTENSIONS / "beanshow"
+    if installed.is_symlink():
+        installed.unlink()
+    elif installed.exists():
+        shutil.rmtree(installed)
     if archive:
         with zipfile.ZipFile(archive) as zf:
             root = next(iter({PurePosixPath(n).parts[0] for n in zf.namelist() if PurePosixPath(n).parts}))
@@ -128,7 +133,7 @@ def setup(archive: Path | None) -> None:
     else:
         # Before a release ZIP exists, load the exact build tree by symlink.
         installed.symlink_to(GAME, target_is_directory=True)
-    (ROOT / "python_extensions/extensions").mkdir(parents=True)
+    (ROOT / "python_extensions/extensions").mkdir(parents=True, exist_ok=True)
 
 
 def server_env() -> dict[str, str]:
@@ -173,7 +178,7 @@ def wait_ready(process: subprocess.Popen, log_path: Path) -> None:
 
 def main() -> int:
     config, wasm, archive, archive_info = preflight()
-    setup(archive)
+    setup(archive, reset="--serve" not in sys.argv)
     log_path = ROOT / f"lnbits-{PORT}.log"
     with log_path.open("w") as log_file:
         def start_server() -> subprocess.Popen:
@@ -308,6 +313,10 @@ def main() -> int:
             evidence_path.write_text(json.dumps(evidence, indent=2) + "\n")
             print(json.dumps(evidence, indent=2), flush=True)
             print(f"READY; server stays up. Evidence: {evidence_path}", flush=True)
+            if os.environ.get("BEANSHOW_BROWSER_CHECK"):
+                browser_env = os.environ.copy()
+                browser_env.update({"BEANSHOW_AUTH_TOKEN": token, "BEANSHOW_BASE": f"{BASE}/ext/beanshow/play?test=1"})
+                subprocess.run(["node", str(GAME / "dev/browser-check.mjs")], env=browser_env, check=True)
             while True:
                 if process.poll() is not None:
                     raise RuntimeError(f"LNbits exited; inspect {log_path}")

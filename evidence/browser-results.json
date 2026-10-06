@@ -1,9 +1,12 @@
 {
+  "adminOwnerPage": true,
+  "fullscreenChromeHidden": true,
+  "playerMarker": true,
   "allCourseImagesPresent": true,
   "keyboardHorizontalDirection": true,
   "practiceReplayResets": true,
   "browser": "Chromium headless / SwiftShader",
-  "screenshots": 3,
+  "screenshots": 16,
   "keyboardMovement": true,
   "keyboardJump": true,
   "keyboardDiveButton": true,

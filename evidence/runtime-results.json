@@ -1,14 +1,14 @@
 {
-  "base": "http://127.0.0.1:5021",
+  "base": "http://127.0.0.1:5022",
   "extension": "beanshow",
   "version": "0.1.0",
   "runtimeCommit": "e13d3e120c928e1db925cc6b5a983eff897f00bd",
   "componentSha256": "7f7febd83defd12d7b68788dd87be9ba6b3d7f87098e0622d9c45a4fc98828ff",
   "installSource": "release_zip",
   "archivePath": "/home/talvasconcelos/Work/wasm_games/bean-show/dist/beanshow-0.1.0.zip",
-  "archiveSha256": "13bcb41ac92fc460004600678c0acdf67ddc087ec2ff7a9386372d8f263ff26e",
+  "archiveSha256": "daf2bf2639615061f80718eacc1c78ca795d6b8b77b58132d85228258417482f",
   "installedComponentSha256": "7f7febd83defd12d7b68788dd87be9ba6b3d7f87098e0622d9c45a4fc98828ff",
-  "startedAt": "2026-10-06T15:51:12Z",
+  "startedAt": "2026-10-06T18:57:52Z",
   "routes": {
     "publicManifest": {
       "status": 200,
@@ -52,7 +52,7 @@
     }
   },
   "tokenStored": false,
-  "log": "/home/talvasconcelos/Work/wasm_games/bean-show/dev/.instance/lnbits-5021.log",
+  "log": "/tmp/beanshow-followup-final/lnbits-5022.log",
   "result": "passed",
   "manifestResponse": {
     "ok": true,
@@ -180,5 +180,5 @@
       ]
     }
   },
-  "restartDataFolder": "/home/talvasconcelos/Work/wasm_games/bean-show/dev/.instance/data"
+  "restartDataFolder": "/tmp/beanshow-followup-final/data"
 }

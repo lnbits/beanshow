@@ -7,12 +7,19 @@ locally bundled Three.js, and synthesised Web Audio. Easy is selected by default
 
 ## Play
 
-After installation, open `/ext/beanshow/play` for signed-out free play, or
-`/ext/beanshow` while logged in. Enter a name, choose a bean colour, join the
+After installation, the extension's Open action lands on the authenticated
+owner page at `/ext/beanshow`. It provides Open Game and the public player link.
+Open `/ext/beanshow/play` for signed-out free play. Enter a name, choose a bean colour, join the
 lobby, then ready up. WASD/arrows move, Space jumps, Shift dives, E grabs,
 Escape pauses. Tab switches spectators after elimination. The course browser
 lets you practise every round. Losing still lets you watch the show finish.
 Touch controls are provided for small/coarse-pointer screens.
+The yellow triangle marks your bean through crowds and stays the same screen
+size during jumps, dives and camera movement. Narrow-screen cameras follow
+your bean to keep it in view. Fullscreen hides the surrounding
+LNbits header, footer and drawer; click its button to enter or leave it.
+The current runtime has no extension-level setting to hide that chrome
+automatically, so fullscreen needs a player click and browser support.
 
 ## Install / build
 
@@ -45,6 +52,7 @@ npm run visual
 The isolated harness installs the ZIP, checks public/authenticated routes,
 restarts the same data directory, and leaves a test server at port 5021.
 Use `runtime-check.py --serve` to reopen an already verified test instance.
+The normal check resets its disposable test data; `--serve` preserves it.
 The browser check uses the existing Playwright installation in the target
 LNbits checkout. `node build.mjs --ui` rebuilds only the browser bundle.
 The final component and archive hashes are in `evidence/`.

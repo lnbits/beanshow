@@ -43,8 +43,8 @@ The requested symlink was added at
 - Component SHA256:
   `7f7febd83defd12d7b68788dd87be9ba6b3d7f87098e0622d9c45a4fc98828ff`
 - ZIP SHA256:
-  `13bcb41ac92fc460004600678c0acdf67ddc087ec2ff7a9386372d8f263ff26e`
-- Release: `dist/beanshow-0.1.0.zip`, one `beanshow/` root, nine runtime/license
+  `784b5c636a7f713ee63901aed451a0464c22215d863625787b18a41ad7a2d095`
+- Release: `dist/beanshow-0.1.0.zip`, one `beanshow/` root, eleven runtime/license
   files, no Python, dependencies, test databases, credentials or symlinks.
 
 Evidence: `bot-results.json`, `browser-results.json`, `runtime-results.json`,
@@ -55,8 +55,9 @@ Evidence: `bot-results.json`, `browser-results.json`, `runtime-results.json`,
 All completed full shows and every complete-course simulation used bot input
 for the human slot. The keyboard crown test starts the bean near the crown;
 it does not prove a person completed Fall Mountain. Actual rendered keyboard
-and emulated touch input were exercised, but **no person has playtested a full
-show**. Human movement feel, casual-player win rate, audio listening, physical
+and emulated touch input were exercised. The user supplied positive play
+feedback, but **I have not observed a human complete a full show**. Casual-player
+win rate, audio listening, physical
 phones, Safari/Firefox, controller support and GPU performance are unverified.
 Easy is the default and gives a speed advantage and more error-prone rivals;
 this is tuning, not a measured casual-player success guarantee.
@@ -82,3 +83,29 @@ new extension on restart**. It was not restarted or otherwise modified. The
 verified isolated server at `http://127.0.0.1:5021/ext/beanshow/play` is available
 now. After restarting your main LNbits, enable Bean Show from Extensions and
 use `/ext/beanshow/play`. No marketplace/public-download installation was tested.
+
+## Owner page and graphics follow-up
+
+`/ext/beanshow` now serves a separate authenticated owner page, with Open Game
+and the public player link. Owner navigation and the Copy button's selected-text
+fallback were exercised; system clipboard permission was not granted by the
+sandbox. No paid-game creation controls or backend were added.
+
+Native fullscreen was verified to fill the parent browser viewport and hide
+LNbits header, footer and drawer. The runtime has no per-extension chrome/layout
+setting, so automatic hiding on `/play` was not implemented. Players click
+Fullscreen; unsupported browsers hide the button.
+
+The player uses an outlined yellow triangle, drawn above the crowd at a fixed
+screen size and anchored independently of bean rotation. Shadows use a stationary
+course-wide 1024 map with soft filtering, and bean meshes have smoother curves.
+Canvas labels use sRGB and bypass tone mapping to preserve contrast. Actual
+device shadow jitter and GPU frame rate were not benchmarked.
+
+The full Chromium regression passed with owner navigation, fullscreen,
+keyboard/touch controls, a bot-driven five-round show and all 16 recaptured
+course previews. The subsequent label colour-space and narrow-screen camera corrections has a separate
+focused browser check (`polish-results.json`), including bean visibility on a
+390-pixel viewport and resuming the initialized instance. The simulation was unchanged;
+the original 256-round matrix was not repeated. Final ZIP/runtime byte equality
+is recorded in `final-install.json`.
