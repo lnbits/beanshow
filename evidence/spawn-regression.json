@@ -1,44 +1,24 @@
 {
   "rounds": [
     {
-      "round": "roll",
-      "difficulty": "easy",
-      "runs": 8,
-      "deadlines": 0,
-      "minSeconds": 4.03,
-      "maxSeconds": 5.77,
-      "physicalFinishes": 0,
-      "falls": 160
-    },
-    {
       "round": "match",
       "difficulty": "easy",
       "runs": 8,
       "deadlines": 0,
-      "minSeconds": 9.58,
-      "maxSeconds": 16.32,
+      "minSeconds": 57,
+      "maxSeconds": 57,
       "physicalFinishes": 0,
-      "falls": 160
-    },
-    {
-      "round": "roll",
-      "difficulty": "normal",
-      "runs": 8,
-      "deadlines": 0,
-      "minSeconds": 5.52,
-      "maxSeconds": 7,
-      "physicalFinishes": 0,
-      "falls": 160
+      "falls": 290
     },
     {
       "round": "match",
       "difficulty": "normal",
       "runs": 8,
       "deadlines": 0,
-      "minSeconds": 10.07,
-      "maxSeconds": 27.28,
+      "minSeconds": 45,
+      "maxSeconds": 45,
       "physicalFinishes": 0,
-      "falls": 160
+      "falls": 210
     }
   ],
   "shows": [
@@ -111,7 +91,7 @@
         "jump",
         "showdown"
       ],
-      "winner": 31,
+      "winner": 23,
       "deadlines": 0
     },
     {
@@ -135,7 +115,7 @@
         "tiptoe",
         "ice"
       ],
-      "winner": 28,
+      "winner": 9,
       "deadlines": 0
     },
     {
@@ -193,6 +173,8 @@
     "Input-driven acceleration, jumping, diving, friction.",
     "An idle human is eliminated; Easy does not award automatic qualification.",
     "Final crown requires grab input.",
+    "Match: 2/4/6 fruit waves, exact phase boundaries, fixed layouts, floor consistency, all survivors qualify, singleton progression.",
+    "Repository discovery manifest points to the requested lnbits/beanshow location.",
     "No permissions; config and component export agree."
   ],
   "notes": [

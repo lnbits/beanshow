@@ -1,0 +1,16 @@
+import {createRequire} from 'node:module';
+import assert from 'node:assert/strict';
+import {writeFileSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+const evidence=fileURLToPath(new URL('../evidence/',import.meta.url));
+const {chromium}=createRequire('/home/talvasconcelos/Work/lnbits_pg/')('playwright');
+const browser=await chromium.launch({headless:true,args:['--no-sandbox','--enable-unsafe-swiftshader']});
+const page=await browser.newPage({viewport:{width:390,height:844},hasTouch:true,isMobile:true}),errors=[];
+page.on('pageerror',e=>errors.push(e.message));
+await page.goto(process.env.BEANSHOW_BASE||'http://127.0.0.1:5021/ext/beanshow/play?test=1',{waitUntil:'networkidle'});
+const f=await(await page.waitForSelector('iframe.wasm-extension-frame')).contentFrame();await f.waitForFunction(()=>window.beanTest&&!document.getElementById('join').disabled);
+await f.evaluate(()=>{window.beanTest.preview('match');window.beanTest.matchTime(38);});
+assert.equal(await f.locator('#match-fruits img').count(),6);assert(!(await f.locator('#map').isVisible()));assert(Math.abs(await f.evaluate(()=>window.beanTest.screenX()))<.9);
+await f.locator('#game').screenshot({path:evidence+'match-mobile.png'});
+await f.evaluate(()=>window.beanTest.matchTime(55));assert.equal(await f.locator('#match-stage').innerText(),'ALL WAVES CLEARED');assert.equal(await f.locator('#match-clock').innerText(),'Results in 2s');
+assert.deepEqual(errors,[]);writeFileSync(evidence+'match-final-results.json',JSON.stringify({portraitBoardCamera:true,beanVisible:true,sixFruitLegend:true,lastWaveCue:true,errors},null,2)+'\n');await browser.close();console.log('PASS final portrait camera and last-wave cue');

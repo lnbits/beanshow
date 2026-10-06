@@ -72,7 +72,7 @@ The final component and archive hashes are in `evidence/`.
 | Jump Club | Lower and upper rotating bars, jumping and knockback | Elimination quota; simplified bean collisions |
 | Block Party | Approaching walls with openings and low jump hurdles | Compact repeating obstacle sequence |
 | Roll Out | Five conveyor strips with moving gaps and lane switching | Flat strip approximation, not cylindrical rotating geometry |
-| Perfect Match | Six fruit types, memorise/choose/drop phases | Text-labelled fruit tiles rather than illustrations |
+| Perfect Match | Three waves with 2/4/6 illustrated fruits, target card, countdown, drop and reset cues; all survivors qualify | Compact 4×4 board; no rotating beam variant |
 | Hex-A-Gone | Shared disappearing tiles and three stacked layers | Three layers instead of the original full arena |
 | Thin Ice | Three cracks per tile, last survivor wins | Flat compact ice arena; colour changes rather than crack textures |
 | Jump Showdown | Rotating bars, six sequentially falling sectors | Fixed sector order rather than the original randomness |
@@ -117,3 +117,5 @@ not submit client wins for money. Before paid/multiplayer release, add trusted
 simulation using capabilities actually present in the selected runtime,
 validate inputs, persist authoritative results, and verify idempotent payment
 admission/settlement/refunds. Peer relay alone does not make outcomes trustworthy.
+
+`manifest.json` declares the intended repository `lnbits/beanshow`, as requested. No GitHub repository has been created or release published.

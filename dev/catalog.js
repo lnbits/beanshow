@@ -10,7 +10,7 @@ export const ROUNDS = [
   {id:'jump',name:'Jump Club',kind:'survival',tip:'Jump the green bar. Stay clear when the upper pink bar lines up.',time:55},
   {id:'blocks',name:'Block Party',kind:'survival',tip:'Find the opening in each wall. Jump the low hurdles.',time:55},
   {id:'roll',name:'Roll Out',kind:'survival',tip:'Switch between rolling strips. Watch the gaps and the edge.',time:55},
-  {id:'match',name:'Perfect Match',kind:'survival',tip:'Memorise the fruit, then stand on the fruit shown at the top.',time:52},
+  {id:'match',name:'Perfect Match',kind:'survival',tip:'Memorise the fruit tiles. Match the target before the wrong tiles drop. Survive three waves.',time:60},
   {id:'hex',name:'Hex-A-Gone',kind:'final',tip:'Tiles disappear under your feet. Use all three layers. Last bean wins.',time:100},
   {id:'ice',name:'Thin Ice',kind:'final',tip:'Each tile cracks three times. Keep moving. Last bean wins.',time:100},
   {id:'showdown',name:'Jump Showdown',kind:'final',tip:'Jump the bars while platform segments fall away. Last bean wins.',time:100},

@@ -4,7 +4,7 @@ from pathlib import Path
 root=Path(__file__).resolve().parents[1]
 config=json.loads((root/'config.json').read_text());out=root/'dist';out.mkdir(exist_ok=True)
 archive=out/f"beanshow-{config['version']}.zip"
-files=[root/'config.json',root/'THREE-LICENSE.txt']+[p for name in ['ui','static','wasm'] for p in (root/name).rglob('*') if p.is_file()]
+files=[root/'config.json',root/'manifest.json',root/'THREE-LICENSE.txt']+[p for name in ['ui','static','wasm'] for p in (root/name).rglob('*') if p.is_file()]
 with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED) as z:
  for p in files:
   assert not p.is_symlink()

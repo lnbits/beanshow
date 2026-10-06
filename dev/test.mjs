@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {writeFileSync,readFileSync} from 'node:fs';
-import {ROUNDS,DT,makeShow,beginRound,step,advanceShow,floorAt} from './sim.js';
+import {ROUNDS,DT,makeShow,beginRound,step,advanceShow,floorAt,matchPhase} from './sim.js';
 import {showManifest} from './component.js';
 const report={rounds:[],shows:[],checks:[],notes:['All autonomous runs use botInput for the player too. These are completion checks, not human playtests.']};
 assert.equal(JSON.parse(showManifest('{}')).data.rounds.length,16);for(const bad of ['[]','null','0','invalid'])assert.equal(JSON.parse(showManifest(bad)).ok,false);report.checks.push('Manifest accepts only objects; 16 declared rounds.');
@@ -11,5 +11,20 @@ const a=run(beginRound(makeShow(5),'doors')),b=run(beginRound(makeShow(5),'doors
 let s=beginRound(makeShow(22),'hitparade'),p=s.players[0];for(let i=0;i<120;i++)step(s,{0:{z:1}});assert(p.z>8);step(s,{0:{jump:true}});assert(p.y>0);const speed=Math.hypot(p.vx,p.vz);step(s,{0:{z:1,dive:true}});assert(Math.hypot(p.vx,p.vz)>speed);for(let i=0;i<120;i++)step(s,{0:{}});assert(Math.hypot(p.vx,p.vz)<.2);report.checks.push('Input-driven acceleration, jumping, diving, friction.');
 s=beginRound(makeShow(55),'doors');while(!s.finished)step(s,{0:{}});assert(!s.qualified.includes(0));report.checks.push('An idle human is eliminated; Easy does not award automatic qualification.');
 s=beginRound({...makeShow(77),round:4,ids:[0,1,2]},'mountain');p=s.players[0];Object.assign(p,{x:0,z:s.length,y:3,ground:false});step(s,{0:{}});assert(!p.done,'crown must require grab');step(s,{0:{grab:true}});assert.equal(s.winner,0);report.checks.push('Final crown requires grab input.');
+// Match phases drive both floor physics and rendering; restoration is between waves.
+for(const difficulty of ['easy','normal']){
+ const memory=difficulty==='easy'?8:6,choose=difficulty==='easy'?6:4,length=memory+choose+5;
+ s=beginRound(makeShow(811,difficulty),'match');const layout=s.tiles.map(t=>t.fruit);assert.equal(new Set(layout).size,2);
+ for(const [time,stage] of [[0,'memorise'],[memory,'choose'],[memory+choose,'drop'],[length-2,'reset']]){
+  s.time=time;assert.equal(matchPhase(s).stage,stage);
+  for(const tile of s.tiles)assert.equal(!!floorAt(s,tile.x,tile.z),stage!=='drop'||tile.fruit===s.matchTarget);
+  assert.deepEqual(s.tiles.map(t=>t.fruit),layout,'layout must stay fixed inside a wave');
+ }
+ for(const [cycle,count] of [[1,4],[2,6]]){s.time=cycle*length-DT;step(s);assert.equal(matchPhase(s).stage,'memorise');assert.equal(new Set(s.tiles.map(t=>t.fruit)).size,count);assert(s.tiles.some(t=>t.fruit===s.matchTarget));}
+ s.time=3*length-DT;step(s);assert(s.finished);assert.deepEqual(s.qualified,s.players.filter(p=>p.alive).map(p=>p.id));assert(!s.timeout);
+}
+s=beginRound({...makeShow(91),ids:[0]},'match');step(s);assert.deepEqual(s.qualified,[0]);const soloShow={...makeShow(91),round:3,ids:[0]};s=run(beginRound(soloShow,'doors'));assert.deepEqual(s.qualified,[0]);
+report.checks.push('Match: 2/4/6 fruit waves, exact phase boundaries, fixed layouts, floor consistency, all survivors qualify, singleton progression.');
+const listing=JSON.parse(readFileSync('../manifest.json'));assert.deepEqual(listing.repos,[{id:'beanshow',organisation:'lnbits',repository:'beanshow'}]);report.checks.push('Repository discovery manifest points to the requested lnbits/beanshow location.');
 const config=JSON.parse(readFileSync('../config.json'));assert.deepEqual(config.permissions,[]);assert.equal(config.api_routes[0].export,'show-manifest');const magic=readFileSync('../wasm/module.wasm').subarray(0,8);assert.equal(magic[4],13,'must be a component, not a core module');report.checks.push('No permissions; config and component export agree.');
 writeFileSync(process.env.ROUND_FILTER?'../evidence/spawn-regression.json':'../evidence/bot-results.json',JSON.stringify(report,null,2)+'\n');console.log('PASS',report.rounds.length*8,'individual rounds,',report.shows.length,'full shows');

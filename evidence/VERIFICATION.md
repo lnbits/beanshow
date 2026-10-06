@@ -41,10 +41,10 @@ The requested symlink was added at
 ## Exact artifacts
 
 - Component SHA256:
-  `7f7febd83defd12d7b68788dd87be9ba6b3d7f87098e0622d9c45a4fc98828ff`
+  `73b3ec962b003d23802237f0f62068acf6b38b51dd6483ec3ab2fc9d0ad07578`
 - ZIP SHA256:
-  `784b5c636a7f713ee63901aed451a0464c22215d863625787b18a41ad7a2d095`
-- Release: `dist/beanshow-0.1.0.zip`, one `beanshow/` root, eleven runtime/license
+  `94fa4f9fb4b55eb845b98f64c66e14ea5e0e8f70bdffaaa917bb0705efe37883`
+- Release: `dist/beanshow-0.1.0.zip`, one `beanshow/` root, twelve runtime/license/discovery
   files, no Python, dependencies, test databases, credentials or symlinks.
 
 Evidence: `bot-results.json`, `browser-results.json`, `runtime-results.json`,
@@ -106,6 +106,43 @@ The full Chromium regression passed with owner navigation, fullscreen,
 keyboard/touch controls, a bot-driven five-round show and all 16 recaptured
 course previews. The subsequent label colour-space and narrow-screen camera corrections has a separate
 focused browser check (`polish-results.json`), including bean visibility on a
-390-pixel viewport and resuming the initialized instance. The simulation was unchanged;
-the original 256-round matrix was not repeated. Final ZIP/runtime byte equality
-is recorded in `final-install.json`.
+390-pixel viewport and resuming the initialized instance. That earlier graphics follow-up did not change simulation rules. Current ZIP/runtime
+byte equality is recorded in `final-install.json`.
+
+## Perfect Match and repository manifest follow-up
+
+`manifest.json` now uses the LNQ1/Street Fighter repository-list format with
+`id=beanshow`, `organisation=lnbits`, `repository=beanshow`, as requested.
+It passes the target runtime's actual `Manifest.parse_raw` schema and is included
+in the ZIP. This is an intended repository location; no repository or release
+was created or published.
+
+Perfect Match now has three balanced, seeded layouts with 2/4/6 fruit types,
+large procedural fruit illustrations, a target card, stage countdowns and
+explicit reset cues. Easy gives 8 seconds to memorise and 6 to choose; Normal
+uses 6 and 4. Unsafe tiles stay absent for the entire 3-second drop; the full
+floor returns during a labelled 2-second reset. Layouts change only when a new
+wave starts. All survivors qualify after three waves; a lone survivor may finish
+early. Subsequent rounds handle a singleton field correctly. Portrait Match
+uses a whole-board camera below the target card and hides the redundant radar;
+other rounds retain their existing cameras.
+
+Checks for this update:
+- `npm test`: 256 individual bot runs and 12 full shows passed, zero deadlines.
+- `ROUND_FILTER=match npm test`: another 16 Match bot runs and 12 shows passed,
+  plus exact phase boundaries, floor consistency, unchanged layouts within waves,
+  2/4/6 fruit availability, all-survivor completion and singleton progression.
+- `MATCH_ONLY=1 node browser-check.mjs`: real LNbits iframe/CSP, memory/target/
+  drop/reset/new-wave rendering, radar holes, bot-driven practice completion,
+  mobile target-card fit; zero errors. Six updated screenshots were reviewed.
+- `node match-final-check.mjs`: final portrait camera, bean visibility and final
+  wave results cue; screenshot captured, zero page errors.
+- Rebuilt WASM loaded through the existing isolated server lifecycle; signed-out
+  public API returns the updated 60-second Match definition and play page 200;
+  signed-out owner page remains 401. Final source/ZIP/installed bytes match for
+  all 12 files. Development symlink unchanged. Main LNbits was not restarted.
+
+Screenshots use paused timeline setups, including artificial phase jumps; they
+verify presentation, not human survival. Bot runs test actual continuous physics.
+The updated Match has not been manually completed by a human here. All earlier
+human-play, physical-device, audio, GPU, multiplayer and payment limitations remain.

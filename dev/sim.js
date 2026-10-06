@@ -12,7 +12,7 @@ export function makeShow(seed=Date.now(),difficulty='easy'){
 export function beginRound(show,id=show.plan[show.round],ids=show.ids){
  const def=ROUNDS.find(r=>r.id===id);if(!def)throw Error('Unknown round');
  const random=rng(show.seed+show.round*7919),isRace=def.kind==='race'||id==='mountain';
- const n=ids.length,qualify=def.kind==='final'?1:Math.min([40,28,18,10][show.round]||10,n-1);
+ const n=ids.length,qualify=def.kind==='final'?1:Math.max(1,Math.min([40,28,18,10][show.round]||10,n-1));
  const state={id,def,difficulty:show.difficulty,random,time:0,finished:false,qualify,n,isRace,width:26,length:id==='mountain'?90:104,players:[],order:[],eliminated:[],tiles:[],obstacles:[],doors:[],seesaws:[],path:[],winner:null,timeout:false};
  const easy=show.difficulty==='easy';
  for(let i=0;i<n;i++){
@@ -43,7 +43,8 @@ export function beginRound(show,id=show.plan[show.round],ids=show.ids){
   const x=Math.sqrt(3)*1.22*(q+r/2),z=1.83*r;if(x*x+z*z>125)continue;
   state.tiles.push({x,z,w:2.44,d:2.44,y:id==='hex'?4+layer*4:0,layer,life:0,health:id==='ice'?3:1,dead:false,active:false});
  }
- if(id==='match')for(let x=0;x<4;x++)for(let z=0;z<4;z++)state.tiles.push({x:(x-1.5)*5.8,z:(z-1.5)*5.8,w:5.7,d:5.7,y:0,fruit:Math.floor(random()*6),dead:false});
+ if(id==='match')for(let x=0;x<4;x++)for(let z=0;z<4;z++)state.tiles.push({x:(x-1.5)*5.8,z:(z-1.5)*5.8,w:5.7,d:5.7,y:0,fruit:0,dead:false});
+ if(id==='match'){state.matchSeed=show.seed+show.round*7919;state.qualify=n;prepareMatch(state,0);}
  if(id==='match')state.players.forEach((p,i)=>{const tile=state.tiles[i%16];p.x=tile.x+(Math.floor(i/16)%3-1)*1.3;p.z=tile.z+(i%2?-.7:.7);});
  if(id==='roll')for(const p of state.players)if(!floorAt(state,p.x,p.z)){for(let d=.5;d<=12;d+=.5){const z=p.z+d;if(floorAt(state,p.x,z)){p.z=z;break;}}}
  return state;
@@ -67,7 +68,17 @@ export function blockWalls(s){
  }
  return walls;
 }
-export function matchPhase(s){const cycle=Math.floor(s.time/13),t=s.time%13;return {cycle,reveal:t<6,choose:t>=6&&t<9,drop:t>=9&&t<12,target:(s.tiles[cycle*3%s.tiles.length]||{}).fruit||0};}
+function prepareMatch(s,cycle){
+ const random=rng(s.matchSeed+cycle*3253),count=2+Math.min(cycle,2)*2,fruits=s.tiles.map((_,i)=>i%count);
+ for(let i=fruits.length-1;i>0;i--){const j=Math.floor(random()*(i+1));[fruits[i],fruits[j]]=[fruits[j],fruits[i]];}
+ s.tiles.forEach((tile,i)=>{tile.fruit=fruits[i];});s.matchCycle=cycle;s.matchTarget=Math.floor(random()*count);
+}
+export function matchPhase(s){
+ const memory=s.difficulty==='easy'?8:6,choose=s.difficulty==='easy'?6:4,length=memory+choose+5,cycle=Math.floor((s.time+1e-8)/length),t=Math.max(0,s.time-cycle*length);
+ const stage=cycle>=3?'complete':t+1e-8<memory?'memorise':t+1e-8<memory+choose?'choose':t+1e-8<memory+choose+3?'drop':'reset';
+ const end={memorise:memory,choose:memory+choose,drop:memory+choose+3,reset:length,complete:t}[stage];
+ return {cycle,stage,reveal:stage==='memorise',choose:stage==='choose',drop:stage==='drop',reset:stage==='reset',remaining:Math.max(0,Math.ceil(end-t-1e-8)),fruitCount:2+Math.min(cycle,2)*2,target:s.matchTarget};
+}
 export function sectorSafe(s,angle){
  if(s.id!=='showdown')return true;
  const sector=Math.floor(((angle+TAU)%TAU)/TAU*8),dropped=Math.min(6,Math.floor(s.time/10));return sector>=dropped;
@@ -151,9 +162,10 @@ function botInput(s,p){
  return {x:len>.4?dx/Math.max(1,len):0,z:len>.4?dz/Math.max(1,len):0,jump:jump&&random()<p.skill,dive:false,grab};
 }
 function knock(p,dx,dz,power=9){if(p.stun>.35)return;p.vx+=dx*power;p.vz+=dz*power;p.vy=Math.max(p.vy,3.8);p.ground=false;p.stun=.65;}
-function fail(s,p){p.falls++;if(s.isRace&&s.id!=='slime'){p.x=clamp(p.x,-10,10);p.z=p.checkpoint;if(s.id==='tiptoe')p.routeRow=0;if(s.id==='dizzy'){const discs=s.obstacles.filter(o=>o.type==='disc'&&o.z<p.progress).sort((a,b)=>b.z-a.z);const disc=discs.find(o=>Math.abs(o.x-p.x)<5.8)||discs[0];if(disc){p.x=disc.x;p.z=disc.z;}}if(s.id==='seesaw'&&p.checkpointX!==undefined)p.x=p.checkpointX;p.y=2+(s.id==='slime'?p.z*.065:0);p.vx=p.vz=p.vy=0;p.stun=.55;p.ground=false;}else{p.alive=false;p.deathTime=s.time;s.eliminated.push(p.id);if(!s.isRace){const alive=s.players.filter(q=>q.alive);if(alive.length<=s.qualify)finish(s,alive.map(q=>q.id));}}}
+function fail(s,p){p.falls++;if(s.isRace&&s.id!=='slime'){p.x=clamp(p.x,-10,10);p.z=p.checkpoint;if(s.id==='tiptoe')p.routeRow=0;if(s.id==='dizzy'){const discs=s.obstacles.filter(o=>o.type==='disc'&&o.z<p.progress).sort((a,b)=>b.z-a.z);const disc=discs.find(o=>Math.abs(o.x-p.x)<5.8)||discs[0];if(disc){p.x=disc.x;p.z=disc.z;}}if(s.id==='seesaw'&&p.checkpointX!==undefined)p.x=p.checkpointX;p.y=2+(s.id==='slime'?p.z*.065:0);p.vx=p.vz=p.vy=0;p.stun=.55;p.ground=false;}else{p.alive=false;p.deathTime=s.time;s.eliminated.push(p.id);if(!s.isRace){const alive=s.players.filter(q=>q.alive);if(alive.length<=(s.id==='match'?1:s.qualify))finish(s,alive.map(q=>q.id));}}}
 export function step(s,inputs={},dt=DT){
  if(s.finished)return;s.time+=dt;
+ if(s.id==='match'){const phase=matchPhase(s);if(phase.stage==='complete'){finish(s,s.players.filter(p=>p.alive).map(p=>p.id));return;}if(phase.cycle!==s.matchCycle)prepareMatch(s,phase.cycle);}
  for(const tile of s.tiles)if(tile.active&&!tile.dead){tile.life-=dt;if(tile.life<=0){tile.health--;if(tile.health<=0)tile.dead=true;else tile.active=false;}}
  if(s.id==='seesaw')for(const tile of s.seesaws){let load=0;for(const p of s.players)if(p.alive&&p.ground&&Math.abs(p.x-tile.x)<6&&Math.abs(p.z-tile.z)<8)load+=(p.x-tile.x)*.008;tile.tilt+= (clamp(load,-.55,.55)-tile.tilt)*dt*2;}
  const walls=s.id==='blocks'?blockWalls(s):[];
@@ -213,7 +225,7 @@ export function step(s,inputs={},dt=DT){
  const alive=s.players.filter(p=>p.alive),active=alive.filter(p=>!p.done);
  if(s.def.kind==='final'&&!s.isRace&&alive.length<=1)finish(s,alive.map(p=>p.id));
  else if(s.isRace&&s.order.length>=s.qualify)finish(s,s.order.slice(0,s.qualify));
- else if(s.def.kind!=='final'&&!s.isRace&&alive.length<=s.qualify)finish(s,alive.map(p=>p.id));
+ else if(s.def.kind!=='final'&&!s.isRace&&alive.length<=(s.id==='match'?1:s.qualify))finish(s,alive.map(p=>p.id));
  else if(s.isRace&&active.length===0)finish(s,s.order.slice(0,s.qualify));
  else if(s.time>=s.def.time){
   s.timeout=true;

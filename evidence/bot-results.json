@@ -115,10 +115,10 @@
       "difficulty": "easy",
       "runs": 8,
       "deadlines": 0,
-      "minSeconds": 9.58,
-      "maxSeconds": 16.32,
+      "minSeconds": 57,
+      "maxSeconds": 57,
       "physicalFinishes": 0,
-      "falls": 160
+      "falls": 277
     },
     {
       "round": "hex",
@@ -275,10 +275,10 @@
       "difficulty": "normal",
       "runs": 8,
       "deadlines": 0,
-      "minSeconds": 10.07,
-      "maxSeconds": 27.28,
+      "minSeconds": 45,
+      "maxSeconds": 45,
       "physicalFinishes": 0,
-      "falls": 160
+      "falls": 208
     },
     {
       "round": "hex",
@@ -331,7 +331,7 @@
         "match",
         "ice"
       ],
-      "winner": 22,
+      "winner": 28,
       "deadlines": 0
     },
     {
@@ -391,7 +391,7 @@
         "jump",
         "showdown"
       ],
-      "winner": 31,
+      "winner": 5,
       "deadlines": 0
     },
     {
@@ -415,7 +415,7 @@
         "tiptoe",
         "ice"
       ],
-      "winner": 28,
+      "winner": 6,
       "deadlines": 0
     },
     {
@@ -427,7 +427,7 @@
         "match",
         "showdown"
       ],
-      "winner": 35,
+      "winner": 22,
       "deadlines": 0
     },
     {
