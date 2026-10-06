@@ -1,0 +1,17 @@
+{
+  "allCourseImagesPresent": true,
+  "keyboardHorizontalDirection": true,
+  "practiceReplayResets": true,
+  "browser": "Chromium headless / SwiftShader",
+  "screenshots": 3,
+  "keyboardMovement": true,
+  "keyboardJump": true,
+  "keyboardDiveButton": true,
+  "keyboardCrownGrab": true,
+  "pauseResume": true,
+  "soundToggle": true,
+  "lobbyJoinReady": true,
+  "fullShow": "Bot-driven player, rendered Continue buttons",
+  "mobile": "390 × 844 touch emulation: joystick, jump, dive and grab passed; no physical device tested",
+  "errors": []
+}

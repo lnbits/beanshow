@@ -1,0 +1,201 @@
+{
+  "rounds": [
+    {
+      "round": "roll",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 4.03,
+      "maxSeconds": 5.77,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "match",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 9.58,
+      "maxSeconds": 16.32,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "roll",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 5.52,
+      "maxSeconds": 7,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "match",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 10.07,
+      "maxSeconds": 27.28,
+      "physicalFinishes": 0,
+      "falls": 160
+    }
+  ],
+  "shows": [
+    {
+      "seed": 41,
+      "rounds": [
+        "slime",
+        "gates",
+        "roll",
+        "match",
+        "ice"
+      ],
+      "winner": 22,
+      "deadlines": 0
+    },
+    {
+      "seed": 82,
+      "rounds": [
+        "slime",
+        "tiptoe",
+        "roll",
+        "blocks",
+        "ice"
+      ],
+      "winner": 17,
+      "deadlines": 0
+    },
+    {
+      "seed": 123,
+      "rounds": [
+        "slime",
+        "dizzy",
+        "blocks",
+        "gates",
+        "mountain"
+      ],
+      "winner": 0,
+      "deadlines": 0
+    },
+    {
+      "seed": 164,
+      "rounds": [
+        "dizzy",
+        "hitparade",
+        "blocks",
+        "roll",
+        "mountain"
+      ],
+      "winner": 14,
+      "deadlines": 0
+    },
+    {
+      "seed": 205,
+      "rounds": [
+        "doors",
+        "hitparade",
+        "roll",
+        "blocks",
+        "ice"
+      ],
+      "winner": 13,
+      "deadlines": 0
+    },
+    {
+      "seed": 246,
+      "rounds": [
+        "tiptoe",
+        "seesaw",
+        "match",
+        "jump",
+        "showdown"
+      ],
+      "winner": 31,
+      "deadlines": 0
+    },
+    {
+      "seed": 287,
+      "rounds": [
+        "tiptoe",
+        "seesaw",
+        "jump",
+        "roll",
+        "showdown"
+      ],
+      "winner": 0,
+      "deadlines": 0
+    },
+    {
+      "seed": 328,
+      "rounds": [
+        "slime",
+        "dizzy",
+        "match",
+        "tiptoe",
+        "ice"
+      ],
+      "winner": 28,
+      "deadlines": 0
+    },
+    {
+      "seed": 369,
+      "rounds": [
+        "slime",
+        "tiptoe",
+        "blocks",
+        "match",
+        "showdown"
+      ],
+      "winner": 35,
+      "deadlines": 0
+    },
+    {
+      "seed": 410,
+      "rounds": [
+        "slime",
+        "dizzy",
+        "jump",
+        "whirlygig",
+        "ice"
+      ],
+      "winner": 58,
+      "deadlines": 0
+    },
+    {
+      "seed": 451,
+      "rounds": [
+        "seesaw",
+        "hitparade",
+        "blocks",
+        "roll",
+        "hex"
+      ],
+      "winner": 31,
+      "deadlines": 0
+    },
+    {
+      "seed": 492,
+      "rounds": [
+        "gates",
+        "whirlygig",
+        "roll",
+        "match",
+        "showdown"
+      ],
+      "winner": 3,
+      "deadlines": 0
+    }
+  ],
+  "checks": [
+    "Manifest accepts only objects; 16 declared rounds.",
+    "Seeded deterministic replay; 12 complete five-round shows.",
+    "Input-driven acceleration, jumping, diving, friction.",
+    "An idle human is eliminated; Easy does not award automatic qualification.",
+    "Final crown requires grab input.",
+    "No permissions; config and component export agree."
+  ],
+  "notes": [
+    "All autonomous runs use botInput for the player too. These are completion checks, not human playtests."
+  ]
+}

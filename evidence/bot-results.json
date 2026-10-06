@@ -1,0 +1,481 @@
+{
+  "rounds": [
+    {
+      "round": "whirlygig",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 21.13,
+      "maxSeconds": 23.03,
+      "physicalFinishes": 320,
+      "falls": 51
+    },
+    {
+      "round": "dizzy",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 27.33,
+      "maxSeconds": 32.28,
+      "physicalFinishes": 320,
+      "falls": 1154
+    },
+    {
+      "round": "doors",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 23.28,
+      "maxSeconds": 27.6,
+      "physicalFinishes": 322,
+      "falls": 2
+    },
+    {
+      "round": "gates",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 40.35,
+      "maxSeconds": 80.65,
+      "physicalFinishes": 320,
+      "falls": 1940
+    },
+    {
+      "round": "seesaw",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 20.75,
+      "maxSeconds": 21.45,
+      "physicalFinishes": 320,
+      "falls": 195
+    },
+    {
+      "round": "tiptoe",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 28.97,
+      "maxSeconds": 35.43,
+      "physicalFinishes": 320,
+      "falls": 529
+    },
+    {
+      "round": "slime",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 21.98,
+      "maxSeconds": 23.2,
+      "physicalFinishes": 323,
+      "falls": 28
+    },
+    {
+      "round": "hitparade",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 22.7,
+      "maxSeconds": 23.6,
+      "physicalFinishes": 321,
+      "falls": 76
+    },
+    {
+      "round": "jump",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 9.78,
+      "maxSeconds": 19.67,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "blocks",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 8.68,
+      "maxSeconds": 9.1,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "roll",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 4.03,
+      "maxSeconds": 5.77,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "match",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 9.58,
+      "maxSeconds": 16.32,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "hex",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 10.38,
+      "maxSeconds": 12.57,
+      "physicalFinishes": 0,
+      "falls": 72
+    },
+    {
+      "round": "ice",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 11.97,
+      "maxSeconds": 23,
+      "physicalFinishes": 0,
+      "falls": 72
+    },
+    {
+      "round": "showdown",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 28.18,
+      "maxSeconds": 61.78,
+      "physicalFinishes": 0,
+      "falls": 72
+    },
+    {
+      "round": "mountain",
+      "difficulty": "easy",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 12.82,
+      "maxSeconds": 20.42,
+      "physicalFinishes": 8,
+      "falls": 19
+    },
+    {
+      "round": "whirlygig",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 15.53,
+      "maxSeconds": 15.9,
+      "physicalFinishes": 321,
+      "falls": 24
+    },
+    {
+      "round": "dizzy",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 17.63,
+      "maxSeconds": 18.83,
+      "physicalFinishes": 320,
+      "falls": 423
+    },
+    {
+      "round": "doors",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 18.2,
+      "maxSeconds": 21.92,
+      "physicalFinishes": 321,
+      "falls": 1
+    },
+    {
+      "round": "gates",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 17.68,
+      "maxSeconds": 18.03,
+      "physicalFinishes": 320,
+      "falls": 13
+    },
+    {
+      "round": "seesaw",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 15.23,
+      "maxSeconds": 15.8,
+      "physicalFinishes": 321,
+      "falls": 89
+    },
+    {
+      "round": "tiptoe",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 18.02,
+      "maxSeconds": 19.5,
+      "physicalFinishes": 320,
+      "falls": 212
+    },
+    {
+      "round": "slime",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 16.08,
+      "maxSeconds": 16.37,
+      "physicalFinishes": 320,
+      "falls": 43
+    },
+    {
+      "round": "hitparade",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 16.52,
+      "maxSeconds": 17.43,
+      "physicalFinishes": 320,
+      "falls": 21
+    },
+    {
+      "round": "jump",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 20.58,
+      "maxSeconds": 50.8,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "blocks",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 8.47,
+      "maxSeconds": 9,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "roll",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 5.52,
+      "maxSeconds": 7,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "match",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 10.07,
+      "maxSeconds": 27.28,
+      "physicalFinishes": 0,
+      "falls": 160
+    },
+    {
+      "round": "hex",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 9.78,
+      "maxSeconds": 13.08,
+      "physicalFinishes": 0,
+      "falls": 72
+    },
+    {
+      "round": "ice",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 13.07,
+      "maxSeconds": 30.38,
+      "physicalFinishes": 0,
+      "falls": 72
+    },
+    {
+      "round": "showdown",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 61.3,
+      "maxSeconds": 62.18,
+      "physicalFinishes": 0,
+      "falls": 72
+    },
+    {
+      "round": "mountain",
+      "difficulty": "normal",
+      "runs": 8,
+      "deadlines": 0,
+      "minSeconds": 12.22,
+      "maxSeconds": 15.75,
+      "physicalFinishes": 8,
+      "falls": 27
+    }
+  ],
+  "shows": [
+    {
+      "seed": 41,
+      "rounds": [
+        "slime",
+        "gates",
+        "roll",
+        "match",
+        "ice"
+      ],
+      "winner": 22,
+      "deadlines": 0
+    },
+    {
+      "seed": 82,
+      "rounds": [
+        "slime",
+        "tiptoe",
+        "roll",
+        "blocks",
+        "ice"
+      ],
+      "winner": 17,
+      "deadlines": 0
+    },
+    {
+      "seed": 123,
+      "rounds": [
+        "slime",
+        "dizzy",
+        "blocks",
+        "gates",
+        "mountain"
+      ],
+      "winner": 0,
+      "deadlines": 0
+    },
+    {
+      "seed": 164,
+      "rounds": [
+        "dizzy",
+        "hitparade",
+        "blocks",
+        "roll",
+        "mountain"
+      ],
+      "winner": 14,
+      "deadlines": 0
+    },
+    {
+      "seed": 205,
+      "rounds": [
+        "doors",
+        "hitparade",
+        "roll",
+        "blocks",
+        "ice"
+      ],
+      "winner": 13,
+      "deadlines": 0
+    },
+    {
+      "seed": 246,
+      "rounds": [
+        "tiptoe",
+        "seesaw",
+        "match",
+        "jump",
+        "showdown"
+      ],
+      "winner": 31,
+      "deadlines": 0
+    },
+    {
+      "seed": 287,
+      "rounds": [
+        "tiptoe",
+        "seesaw",
+        "jump",
+        "roll",
+        "showdown"
+      ],
+      "winner": 0,
+      "deadlines": 0
+    },
+    {
+      "seed": 328,
+      "rounds": [
+        "slime",
+        "dizzy",
+        "match",
+        "tiptoe",
+        "ice"
+      ],
+      "winner": 28,
+      "deadlines": 0
+    },
+    {
+      "seed": 369,
+      "rounds": [
+        "slime",
+        "tiptoe",
+        "blocks",
+        "match",
+        "showdown"
+      ],
+      "winner": 35,
+      "deadlines": 0
+    },
+    {
+      "seed": 410,
+      "rounds": [
+        "slime",
+        "dizzy",
+        "jump",
+        "whirlygig",
+        "ice"
+      ],
+      "winner": 58,
+      "deadlines": 0
+    },
+    {
+      "seed": 451,
+      "rounds": [
+        "seesaw",
+        "hitparade",
+        "blocks",
+        "roll",
+        "hex"
+      ],
+      "winner": 31,
+      "deadlines": 0
+    },
+    {
+      "seed": 492,
+      "rounds": [
+        "gates",
+        "whirlygig",
+        "roll",
+        "match",
+        "showdown"
+      ],
+      "winner": 3,
+      "deadlines": 0
+    }
+  ],
+  "checks": [
+    "Manifest accepts only objects; 16 declared rounds.",
+    "Seeded deterministic replay; 12 complete five-round shows.",
+    "Input-driven acceleration, jumping, diving, friction.",
+    "An idle human is eliminated; Easy does not award automatic qualification.",
+    "Final crown requires grab input.",
+    "No permissions; config and component export agree."
+  ],
+  "notes": [
+    "All autonomous runs use botInput for the player too. These are completion checks, not human playtests."
+  ]
+}

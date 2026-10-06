@@ -1,0 +1,14 @@
+import {build} from 'esbuild';
+import {spawnSync} from 'node:child_process';
+import {mkdirSync,renameSync,writeFileSync,readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+process.chdir(fileURLToPath(new URL('.',import.meta.url)));
+mkdirSync('dist',{recursive:true});
+await build({entryPoints:['app.js'],bundle:true,format:'iife',target:'es2022',outfile:'../static/game.js',minify:true,legalComments:'eof'});
+await build({entryPoints:['component.js'],bundle:true,format:'esm',target:'es2020',outfile:'dist/component.js'});
+if(process.argv.includes('--ui'))process.exit(0);
+const result=spawnSync('./node_modules/.bin/jco',['componentize','dist/component.js','--disable','all','--wit','../wasm/lnbits-extension.wit','--world-name','beanshow','-o','../wasm/module.new.wasm'],{stdio:'inherit'});
+if(result.status!==0)process.exit(result.status||1);
+renameSync('../wasm/module.new.wasm','../wasm/module.wasm');
+writeFileSync('../evidence/artifact.json',JSON.stringify({componentSha256:createHash('sha256').update(readFileSync('../wasm/module.wasm')).digest('hex'),runtimeCommit:JSON.parse(readFileSync('runtime.json')).commit},null,2)+'\n');

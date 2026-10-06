@@ -1,0 +1,4 @@
+package lnbits:extension;
+world beanshow {
+ export show-manifest: func(request-json: string) -> string;
+}
