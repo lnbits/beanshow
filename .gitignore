@@ -3,3 +3,5 @@ dev/.npm-cache/
 dev/.instance/
 dev/dist/
 dist/
+evidence/*
+!evidence/VERIFICATION.md
