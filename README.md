@@ -39,6 +39,7 @@ Touch controls and fullscreen are available.
 - Public route: `/ext/beanshow/play`
 - WASM module: `wasm/module.wasm`
 - Permissions: none
+- License: [MIT](LICENSE); bundled Three.js retains its [MIT notice](THREE-LICENSE.txt)
 
 ## Build and test
 
