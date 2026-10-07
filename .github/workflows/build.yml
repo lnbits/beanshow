@@ -5,6 +5,7 @@ on:
     paths:
       - 'config.json'
       - 'manifest.json'
+      - '.gitattributes'
       - 'dev/**'
       - 'static/**'
       - 'ui/**'
@@ -14,6 +15,7 @@ on:
     paths:
       - 'config.json'
       - 'manifest.json'
+      - '.gitattributes'
       - 'dev/**'
       - 'static/**'
       - 'ui/**'

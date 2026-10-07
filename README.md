@@ -34,7 +34,7 @@ Touch controls and fullscreen are available.
 
 - Extension ID: `beanshow`
 - Extension type: `wasm`
-- Version: `0.1.0`
+- Version: `0.1.1`
 - Admin route: `/ext/beanshow`
 - Public route: `/ext/beanshow/play`
 - WASM module: `wasm/module.wasm`
@@ -52,4 +52,4 @@ python3 package-release.py
 ```
 
 The build writes the browser bundle to `static/game.js` and the installable
-component to `wasm/module.wasm`. The install ZIP is `dist/beanshow-0.1.0.zip`.
+component to `wasm/module.wasm`. The install ZIP is `dist/beanshow-0.1.1.zip`.
