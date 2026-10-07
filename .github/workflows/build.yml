@@ -29,6 +29,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Check release gate
+        run: python3 dev/check-release.py
+
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
